@@ -14,13 +14,14 @@ export class PostCreateComponent{
     enteredValue = '';
     enteredTitle = '';
 
+    //injecting PostsService to use in this class 
     constructor(public postService: PostsService) { }
-
 
     onAddPost(form : NgForm){
         if (form.invalid)
             return
 
         this.postService.addPost(form.value.title, form.value.content);
+        form.reset();
     }
 }
